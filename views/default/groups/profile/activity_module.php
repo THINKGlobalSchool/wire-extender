@@ -25,21 +25,18 @@ $all_link = elgg_view('output/url', array(
 	'text' => elgg_echo('link:view:all'),
 ));
 
-$header = "<span class=\"groups-widget-viewall\">$all_link</span>";
-$header .= '<h3>' . elgg_echo('groups:activity') . '</h3>';
 
-$content = '';
-
+// Add wire form
 if (elgg_get_plugin_setting('post_from_activity_stream', 'wire-extender') == 'yes' && elgg_is_logged_in()) {
-	$content = elgg_view('wire-extender/wire_form', array('group' => $vars['entity']));
+	$wire_form = elgg_view('wire-extender/wire_form', array('group' => $vars['entity']));
 }
 
 elgg_push_context('widgets');
 $db_prefix = elgg_get_config('dbprefix');
-$content .= elgg_list_river(array(
+$content = elgg_list_river(array(
 	'limit' => 4,
 	'pagination' => false,
-	'joins' => array("join {$db_prefix}entities e1 on e1.guid = rv.object_guid"),
+	'joins' => array("JOIN {$db_prefix}entities e1 ON e1.guid = rv.object_guid"),
 	'wheres' => array("(e1.container_guid = $group->guid)"),
 ));
 elgg_pop_context();
@@ -48,4 +45,8 @@ if (!$content) {
 	$content = '<p>' . elgg_echo('groups:activity:none') . '</p>';
 }
 
-echo elgg_view_module('info', '', $content, array('header' => $header));
+echo elgg_view('groups/profile/module', array(
+	'title' => elgg_echo('groups:activity'),
+	'content' => $wire_form . $content,
+	'all_link' => $all_link,
+));
