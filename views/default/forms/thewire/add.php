@@ -44,6 +44,7 @@ if (isset($vars['group']) && elgg_instanceof($vars['group'], 'group')) {
 	$access .= elgg_view('input/access', array(
 		'name' => 'access_id', 
 		'value' => (int)get_default_access(),
+		'style' => 'float: none;',
 	));
 }
 

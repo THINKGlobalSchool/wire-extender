@@ -17,6 +17,9 @@ $english = array(
 	'wire-extender:label:thewire:doing' => "Something to say? Something to share? Go for it.",
 	'wire-extender:label:thewire:access' => "For: ",
 	'wire-extender:label:thewire:tips' => 'Tip: Tag posts by putting a # in front of a word.',	
+
+	// River 
+	'river:comment:object:thewire' => '%s commented on %s',
 );
 
 add_translation('en',$english);
