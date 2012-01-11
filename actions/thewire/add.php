@@ -18,7 +18,7 @@ if (empty($body)) {
 	forward(REFERER);
 }
 
-$guid = tgswire_save_post($body, get_loggedin_userid(), $access_id, $parent_guid, $method, $container_guid);
+$guid = tgswire_save_post($body, elgg_get_logged_in_user_guid(), $access_id, $parent_guid, $method, $container_guid);
 if (!$guid) {
 	register_error(elgg_echo("thewire:error"));
 	forward(REFERER);
