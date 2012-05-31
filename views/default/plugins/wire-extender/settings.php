@@ -26,7 +26,7 @@ echo '<div>';
 echo elgg_echo('wire-extender:label:thewire:limitchars'); 
 echo ' ';
 echo elgg_view('input/dropdown', array(
-		'internalname' => 'params[limit_wire_chars]',
+		'name' => 'params[limit_wire_chars]',
 		'options_values' => array(
 			'no' => elgg_echo('option:no'),
 			'yes' => elgg_echo('option:yes')
@@ -39,7 +39,7 @@ echo '<div>';
 echo elgg_echo('wire-extender:label:thewire:postfromactivitystream');
 echo ' ';
 echo elgg_view('input/dropdown', array(
-		'internalname' => 'params[post_from_activity_stream]',
+		'name' => 'params[post_from_activity_stream]',
 		'options_values' => array(
 			'no' => elgg_echo('option:no'),
 			'yes' => elgg_echo('option:yes')
@@ -52,7 +52,7 @@ echo '<div>';
 echo elgg_echo('wire-extender:label:thewire:showinmenu');
 echo ' ';
 echo elgg_view('input/dropdown', array(
-		'internalname' => 'params[show_wire_menu]',
+		'name' => 'params[show_wire_menu]',
 		'options_values' => array(
 			'no' => elgg_echo('option:no'),
 			'yes' => elgg_echo('option:yes')
