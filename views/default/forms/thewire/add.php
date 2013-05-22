@@ -29,24 +29,19 @@ if ($post) {
 // Sort out group access
 if (isset($vars['group']) && elgg_instanceof($vars['group'], 'group')) {
 	$access_id = $vars['group']->group_acl;
-	
-	$access = elgg_view('input/hidden', array(
-		'name' => 'access_id', 
-		'value' => $access_id
-	));
-	
 	$container_guid = elgg_view('input/hidden', array(
 		'name' => 'container_guid',
 		'value' => $vars['group']->getGUID(),
 	));
-} else {
-	$access = "<label>" . elgg_echo("wire-extender:label:thewire:access") . "</label>";
-	$access .= elgg_view('input/access', array(
-		'name' => 'access_id', 
-		'value' => (int)get_default_access(),
-		'style' => 'float: none;',
-	));
 }
+
+$access = "<label>" . elgg_echo("wire-extender:label:thewire:access") . "</label>";
+$access .= elgg_view('input/access', array(
+	'name' => 'access_id', 
+	'value' => (int)get_default_access(),
+	'style' => 'float: none;',
+));
+
 
 if (elgg_get_plugin_setting('limit_wire_chars', 'wire-extender') != 'no') {
 	$characters_content = '<div id="thewire-characters-remaining"><span>140</span>&nbsp;' . elgg_echo('thewire:charleft') . '</div>';
