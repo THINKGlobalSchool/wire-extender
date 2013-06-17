@@ -20,6 +20,9 @@ $english = array(
 
 	// River 
 	'river:comment:object:thewire' => '%s commented on %s',
+
+	// Messages
+	'wire-extender:error:nogrouppermission' => 'You do not have permission to post to this group',
 );
 
 add_translation('en',$english);
