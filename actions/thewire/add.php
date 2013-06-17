@@ -12,6 +12,13 @@ $method = 'site';
 $parent_guid = (int) get_input('parent_guid');
 $container_guid = get_input('container_guid', NULL);
 
+$container = get_entity($container_guid);
+
+if (elgg_instanceof($container, 'group') && !$container->canWriteToContainer(elgg_get_logged_in_user_guid())) {
+	register_error(elgg_echo('wire-extender:error:nogrouppermission'));
+	forward(REFERER);
+}
+
 // make sure the post isn't blank
 if (empty($body)) {
 	register_error(elgg_echo("thewire:blank"));
