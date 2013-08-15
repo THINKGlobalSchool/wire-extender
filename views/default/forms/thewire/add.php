@@ -61,6 +61,8 @@ echo $container_guid;
 
 echo "<div class='elgg-subtext'>" . elgg_echo("wire-extender:label:thewire:tips") . "</div>";
 
+echo elgg_view('forms/thewire/extend');
+
 echo $access;
 
 echo elgg_view('input/submit', array(
