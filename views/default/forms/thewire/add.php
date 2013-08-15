@@ -59,7 +59,7 @@ echo $characters_content;
 
 echo $container_guid;
 
-echo "<div class='elgg-subtext'>" . elgg_echo("wire-extender:label:thewire:tips") . "</div><br />";
+echo "<div class='elgg-subtext'>" . elgg_echo("wire-extender:label:thewire:tips") . "</div>";
 
 echo $access;
 
