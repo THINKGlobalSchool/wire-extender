@@ -11,6 +11,8 @@
  *
  */
 
+die;
+
 if ($vars['entity']->activity_enable == 'no') {
 	return true;
 }
@@ -27,7 +29,7 @@ $all_link = elgg_view('output/url', array(
 
 
 // Add wire form
-if (elgg_get_plugin_setting('post_from_activity_stream', 'wire-extender') == 'yes' && elgg_is_logged_in() && $vars['entity']->isMember(elgg_get_logged_in_user_guid())) {
+if (elgg_get_plugin_setting('post_from_activity_stream', 'wire-extender') == 'yes' && elgg_is_logged_in() && $vars['entity']->isMember(elgg_get_logged_in_user_entity())) {
 	$wire_form = elgg_view('wire-extender/wire_form', array('group' => $vars['entity']));
 }
 

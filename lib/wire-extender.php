@@ -5,18 +5,18 @@
  * @package WireExtender
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
  * @author Jeff Tilson
- * @copyright Think Global School 2009-2010
- * @link http://www.thinkglobalschool.com
+ * @copyright Think Global School 2010 - 2015
+ * @link http://www.thinkglobalschool.org
  */
 
 /**
- * Create a new wire post, the TGS way
+ * Create a new wire post, custom
  *
- * @param string $text           The post text
- * @param int    $userid         The user's guid
- * @param int    $access_id      Public/private etc
- * @param int    $parent_guid    Parent post guid (if any)
- * @param string $method         The method (default: 'site')
+ * @param string $text        The post text
+ * @param int    $userid      The user's guid
+ * @param int    $access_id   Public/private etc
+ * @param int    $parent_guid Parent post guid (if any)
+ * @param string $method      The method (default: 'site')
  * @param int    $container_guid Container guid (for group wire posts)
  * @return guid or false if failure
  */
@@ -27,10 +27,10 @@ function tgswire_save_post($text, $userid, $access_id, $parent_guid = 0, $method
 	$post->owner_guid = $userid;
 	$post->access_id = $access_id;
 
-	// Check if we're removing the limit
-	if (elgg_get_plugin_setting('limit_wire_chars', 'wire-extender') == 'yes') {
-		// only 200 characters allowed
-		$text = elgg_substr($text, 0, 200);
+	// Character limit is now from config
+	$limit = elgg_get_plugin_setting('limit', 'thewire');
+	if ($limit > 0) {
+		$text = elgg_substr($text, 0, $limit);
 	}
 
 	// If supplied with a container_guid, use it
@@ -68,8 +68,13 @@ function tgswire_save_post($text, $userid, $access_id, $parent_guid = 0, $method
 	}
 
 	if ($guid) {
-		add_to_river('river/object/thewire/create', 'create', $post->owner_guid, $post->guid);
-		
+		elgg_create_river_item(array(
+			'view' => 'river/object/thewire/create',
+			'action_type' => 'create',
+			'subject_guid' => $post->owner_guid,
+			'object_guid' => $post->guid,
+		));
+
 		// let other plugins know we are setting a user status
 		$params = array(
 			'entity' => $post,

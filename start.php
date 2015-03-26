@@ -22,7 +22,6 @@
 // Register init event 
 elgg_register_event_handler('init', 'system', 'wire_extender_init');
 
-
 /**
  * Init
  */

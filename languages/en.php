@@ -5,11 +5,11 @@
  * @package WireExtender
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
  * @author Jeff Tilson
- * @copyright Think Global School 2009-2010
- * @link http://www.thinkglobalschool.com
+ * @copyright Think Global School 2010 - 2015
+ * @link http://www.thinkglobalschool.com 
  *
  */
-$english = array(	
+return array(	
 	// Labels
 	'wire-extender:label:thewire:showinmenu' => 'Show The Wire in the main menu?',
 	'wire-extender:label:thewire:postfromactivitystream' => 'Allow posting directly from activity stream?',
@@ -24,5 +24,3 @@ $english = array(
 	// Messages
 	'wire-extender:error:nogrouppermission' => 'You do not have permission to post to this group',
 );
-
-add_translation('en',$english);
